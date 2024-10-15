@@ -31,6 +31,7 @@ import javax.crypto.SecretKey;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -88,8 +89,9 @@ import io.mosip.registration.util.common.BIRBuilder;
 public class UserOnboardServiceImpl extends BaseService implements UserOnboardService {
 
 	public static final String DOMAIN_URI_VALUE = "https://${mosip.hostname}";
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(UserOnboardServiceImpl.class);
 
-	@Autowired
+    @Autowired
 	private UserOnboardDAO userOnBoardDao;
 
 	@Autowired
@@ -517,6 +519,8 @@ public class UserOnboardServiceImpl extends BaseService implements UserOnboardSe
 			final SecretKey symmentricKey = keyGenerator.generateKey();
 
 			LOGGER.info(LOG_REG_USER_ONBOARD, APPLICATION_NAME, APPLICATION_ID, "preparing request.....");
+
+            LOGGER.info("==> "+symmentricKey.toString());
 			// request
 			idaRequestMap.put(RegistrationConstants.ON_BOARD_REQUEST,
 					CryptoUtil.encodeToURLSafeBase64(cryptoCore.symmetricEncrypt(symmentricKey,
