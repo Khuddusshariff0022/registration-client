@@ -11,5 +11,6 @@ To know more about setting up Registration Client, see [Registration Client User
 Configurations used for Registration Client repo is available under [mosip-config](https://github.com/mosip/mosip-config/blob/master/registration-default.properties)
 
 ### Build
+The project requires JDK 21.0.3 and mvn version 3.9.6<br>
 Below command should be run in the parent project **registration**
 `mvn clean install -Dgpg.skip -DskipTests`

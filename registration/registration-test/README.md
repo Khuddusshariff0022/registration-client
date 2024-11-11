@@ -9,6 +9,7 @@ Registration-test automation covers flows [New, Update, Correction, Lost flows](
 2. Testdata files to be set in advance based on schema id's. For default schema testdata is present inside resources folder `repository_eng`
 
 ## Build
+The project requires JDK 21.0.3 and mvn version 3.9.6<br>
 1. First build jar `mvn clean install`
 
 2. Using jar
